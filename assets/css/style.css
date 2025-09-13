@@ -1,0 +1,128 @@
+:root {
+  --neon: #00f5ff;
+}
+
+/* Font settings */
+* {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+h1,h2,h3,h4,h5,h6, .fw-extrabold {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+}
+
+/* Neon buttons / links */
+.btn-neon {
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  text-shadow: 0 0 8px rgba(0,245,255,.5);
+}
+.btn-neon:hover {
+  background: var(--neon);
+  color: #001418;
+}
+.btn-outline-neon {
+  border: 1px solid var(--neon);
+  color: var(--neon);
+}
+.btn-outline-neon:hover {
+  background: var(--neon);
+  color: #001418;
+}
+.link-neon {
+  color: var(--neon);
+  text-decoration: none;
+}
+.link-neon:hover {
+  text-decoration: underline;
+}
+
+/* Card glow */
+.card-glow {
+  border: 1px solid rgba(0,245,255,.25);
+  box-shadow: 0 0 24px rgba(0,245,255,.05);
+}
+
+/* Hero section */
+.hero {
+  min-height: 60vh;
+  background: radial-gradient(1000px 300px at 50% -10%, rgba(0,245,255,.18), transparent 60%), linear-gradient(180deg, #0b0f12 0%, #0b0f12 60%, rgba(11,15,18,0) 100%);
+  position: relative;
+}
+.neon {
+  color: var(--neon);
+  text-shadow: 0 0 16px rgba(0,245,255,.3);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  margin-top: 1rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,.1);
+}
+.timeline-item {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 18px;
+}
+.timeline-dot {
+  position: absolute;
+  left: 2px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 10px rgba(0,245,255,.7);
+}
+
+/* Markdown article */
+.markdown-body p,
+.markdown-body li {
+  line-height: 1.75;
+}
+
+/* Fix sticky navbar overlap on anchor jump */
+:target::before {
+  content: "";
+  display: block;
+  height: 72px;
+  margin-top: -72px;
+  visibility: hidden;
+}
+
+/* ==========================
+   Navbar Dropdown Fix for Light Theme
+   ========================== */
+[data-bs-theme="light"] .navbar {
+  background-color: #ffffff !important;
+}
+
+[data-bs-theme="light"] .navbar .nav-link,
+[data-bs-theme="light"] .navbar .dropdown-item {
+  color: #000 !important; /* Dark text for light theme */
+}
+
+[data-bs-theme="light"] .navbar .nav-link:hover,
+[data-bs-theme="light"] .navbar .dropdown-item:hover {
+  color: var(--neon); /* Neon hover effect */
+  background-color: rgba(0, 245, 255, 0.1); /* subtle hover bg */
+}
+
+[data-bs-theme="light"] .navbar .dropdown-menu {
+  background-color: #ffffff; /* Light dropdown bg */
+  border-color: rgba(0,0,0,0.15);
+}
+
+/* Optional: subtle neon glow on light theme dropdown items */
+[data-bs-theme="light"] .navbar .dropdown-item {
+  text-shadow: 0 0 4px rgba(0,245,255,.4);
+}
