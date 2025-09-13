@@ -1,5 +1,5 @@
-// Redirect to intdex.html if visiting root
-if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+// Redirect visiting root
+if (window.location.pathname === "/" ) {
   window.location.href = "/index.html";
 }
 
