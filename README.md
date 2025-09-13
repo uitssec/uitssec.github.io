@@ -67,7 +67,7 @@ For contributions, collaborations, or joining our activities, please contact the
 This site was created and is maintained by:
 
 **Mohammed Masud Chowdhury Mahir**  
-🔗 GitHub: [@Mmahirmasud](https://github.com/mahirmasud)
+🔗 GitHub: [@mahirmasud](https://github.com/mahirmasud)
 
 ---
 
