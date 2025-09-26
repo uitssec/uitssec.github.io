@@ -14,9 +14,10 @@ This isn’t just about ranks — it’s a reflection of **hard work, teamwork, 
 
 ---
 
-📸 **Highlights from the event**:  
+📸 **Meet Our Teams at the Finals:**:  
 
-<img src="assets/images/bup1.png" alt="Shadowstorm Syndicate" width="300px">  
-<img src="assets/images/bup2.png" alt="57R4NG3R5" width="300px">  
-<img src="assets/images/bup3.png" alt="Stayin @live" width="300px">  
+<img src="assets/images/bupctf/bup1.png" alt="Shadowstorm Syndicate" width="300px">  
+<img src="assets/images//bupctf/bup2.png" alt="57R4NG3R5" width="300px">  
+<img src="assets/images/bupctf/bup3.png" alt="Stayin @live" width="300px">  
+
 
