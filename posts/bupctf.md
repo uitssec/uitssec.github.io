@@ -12,6 +12,8 @@ This isn’t just about ranks — it’s a reflection of **hard work, teamwork, 
 
 🎉 Big congratulations to all the teams — you made us proud! 🏆🚀   
 
+👉 [View the post on Facebook](https://www.facebook.com/uitssec/posts/pfbid0cVvMtbpGUJcfZTbpwjN3omkmkcFeDpX8vnR8oJ5MaMPX9vfE6B9sRDjFtQD1t3ydl)
+
 ---
 
 📸 **Meet Our Teams at the Finals:**:  
@@ -21,4 +23,3 @@ This isn’t just about ranks — it’s a reflection of **hard work, teamwork, 
 <img src="assets/images/bupctf/bup3.png" alt="Stayin @live" width="300px">  
 
 ---
-👉 [View the post on Facebook](https://www.facebook.com/uitssec/posts/pfbid0cVvMtbpGUJcfZTbpwjN3omkmkcFeDpX8vnR8oJ5MaMPX9vfE6B9sRDjFtQD1t3ydl)
