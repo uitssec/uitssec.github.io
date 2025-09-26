@@ -4,5 +4,11 @@
     "date": "2025-07-23",
     "excerpt": "How we learn, collaborate, and compete\u2014our roadmap for 2025.",
     "file": "welcome.md"
-  }
+  },
+  {
+  "title": "BUP CTF 2025 Finals",
+  "date": "2025-09-25",
+  "excerpt": "Celebrating our 3 teams’ performance at the BUP CTF 2025 Finals — hard work, teamwork, and passion on display!",
+  "file": "bupctf.md"
+}
 ]
