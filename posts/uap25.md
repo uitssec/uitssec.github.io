@@ -18,8 +18,8 @@ This isn’t just about ranks — it’s a reflection of **hard work, teamwork, 
 
 📸 **Meet Our Teams at the Finals:**:  
 
-<img src="assets/images/uap25/uap1.png" alt="Cyber Security Enthusiast" width="300px">  
-<img src="assets/images/uap25/uap2.png" alt="Shadowstorm Syndicate" width="300px">  
-<img src="assets/images/uap25/uap3.png" alt="57TR4NG3R5" width="300px">  
+<img src="assets/images/uap25/uap1.jpg" alt="Cyber Security Enthusiast" width="300px">  
+<img src="assets//images/uap25/uap2.jpg" alt="Shadowstorm Syndicate" width="300px">  
+<img src="assets/images/uap25/uap3.jpg" alt="57TR4NG3R5" width="300px">  
 
 ---
