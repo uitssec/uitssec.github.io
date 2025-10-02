@@ -55,4 +55,16 @@
       "photo": ""
     }
   ]
+    "pannel24": [
+    {
+      "name": "Ishraq Uddin Chowdhury",
+      "description": "Senior Executive",
+      "photo": "assets/images/panel/snr24"
+    },
+    {
+      "name": "",
+      "description": "",
+      "photo": ""
+    }
+  ]
 }
