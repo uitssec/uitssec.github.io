@@ -43,11 +43,11 @@
       "year": 2025
     }
   ],
-  "achievers": [
+    "pannel24": [
     {
-      "title": "",
-      "role": "",
-      "image": ""
+      "title": "Ishraq Uddin Chowdhury",
+      "role": "Senior Executive",
+      "image": "assets/images/panel/snr24.jpg"
     },
     {
       "name": "",
@@ -55,11 +55,11 @@
       "photo": ""
     }
   ],
-  "pannel24": [
+  "achievers": [
     {
-      "title": "Ishraq Uddin Chowdhury",
-      "role": "Senior Executive",
-      "image": "assets/images/panel/snr24.jpg"
+      "name": "",
+      "description": "",
+      "photo": ""
     },
     {
       "name": "",
