@@ -45,9 +45,9 @@
   ],
   "achievers": [
     {
-      "title": "LUZAYER",
-      "role": "MOJA",
-      "image": "assets/images/panel/executive2.jpg"
+      "title": "",
+      "role": "",
+      "image": ""
     },
     {
       "name": "",
@@ -57,9 +57,9 @@
   ],
   "pannel24": [
     {
-      "name": "Ishraq Uddin Chowdhury",
-      "description": "Senior Executive",
-      "photo": "assets/images/panel/snr24.jpg"
+      "title": "Ishraq Uddin Chowdhury",
+      "role": "Senior Executive",
+      "image": "assets/images/panel/snr24.jpg"
     },
     {
       "name": "",
