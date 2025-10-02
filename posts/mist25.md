@@ -19,5 +19,5 @@ Our teams demonstrated exceptional **skills, teamwork, and dedication** througho
 📸 **Meet Our Teams at the Finals:**:  
 
 <img src="assets/images/mist25/mist1.jpg" alt="Shadowstorm Syndicate" width="300px">  
-<img src="assets/images//mist25/mist2.jpg" alt="Cyber Security Enthusiast" width="300px" height="225px" style="object-fit:cover;">
+<img src="assets/images//mist25/mist2.jpg" alt="Cyber Security Enthusiast" height="200px">
 <img src="assets/images/mist25/mist3.jpg" alt="Stayin @live" width="300px">  
