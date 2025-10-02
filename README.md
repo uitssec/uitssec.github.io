@@ -69,6 +69,9 @@ This site was created and is maintained by:
 **Mohammed Masud Chowdhury Mahir**  
 🔗 GitHub: [@mahirmasud](https://github.com/mahirmasud)
 
+**Reyazul Islam**  
+🔗 GitHub: [@LUZAYER](https://github.com/LUZAYER)
+
 ---
 
 ## ⚡ Acknowledgements
