@@ -45,9 +45,9 @@
   ],
   "achievers": [
     {
-      "name": "LUZAYER",
-      "description": "MOJA",
-      "photo": "assets/images/panel/executive2.jpg"
+      "title": "LUZAYER",
+      "role": "MOJA",
+      "image": "assets/images/panel/executive2.jpg"
     },
     {
       "name": "",
