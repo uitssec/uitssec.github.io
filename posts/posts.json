@@ -1,10 +1,16 @@
 [
   {
     "title": "Welcome to the Wing",
-    "date": "2025-07-23",
+    "date": "2022-07-23",
     "excerpt": "How we learn, collaborate, and compete\u2014our roadmap for 2025.",
     "file": "welcome.md"
   },
+  {
+  "title": "MIST CTF 2025 Finals",
+  "date": "2025-05-16",
+  "excerpt": "Applauding the efforts of our 3 teams at the MIST CTF 2025 Finals — where hard work, collaboration, and passion shone bright!",
+  "file": "mist25.md"
+},
   {
   "title": "BUP CTF 2025 Finals",
   "date": "2025-09-25",
