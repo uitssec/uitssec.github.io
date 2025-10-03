@@ -45,14 +45,17 @@
   ],
   "achievers": [
     {
-      "name": "",
-      "description": "",
-      "photo": ""
+      "name": "Cyber Security Enthusiast",
+      "description": "Atikur Rahman 
+      Ishraq Uddin Chowdhury
+      Md. Rezwan",
+      "achievement": "3rd place at Flag Hunt 2022",
+      "photo": "assets/images/achievements/ach1.jpg"
     },
     {
-      "name": "",
-      "description": "",
-      "photo": ""
+      "name": "R3D KN1GH7",
+      "description": "3rd place at Cyber Crawler CTF 2023",
+      "photo": "assets/images/achievements/ach2.jpg"
     }
   ]
 }
