@@ -222,7 +222,7 @@ async function loadHallOfFame() {
               <h5 class="card-title">${achiever.name}</h5>
               <p class="card-text">${achiever.description}</p>
               <p class="card-text">${achiever.members}</p>
-              <p class="card-text">${achiever.link}</p>
+              <a class="card-text" href="${achiever.link}">Post Link</a>
             </div>
           </div>
         </div>
