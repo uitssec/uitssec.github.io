@@ -47,11 +47,9 @@
     {
       "name": "Cyber Security Enthusiast",
       "description": "3rd place at Flag Hunt 2022",
-      "members": [
-      "Atikur Rahman",
-      "Ishraq Uddin Chowdhury",
-      "Md. Rezwan"
-      ],
+      "members": "Atikur Rahman",
+      "members": "Ishraq Uddin Chowdhury",
+      "members": "Md. Rezwan",
       "photo": "assets/images/achievements/ach1.jpg",
       "link": "https://www.facebook.com/share/p/1ADZq2djtx/"
     },
