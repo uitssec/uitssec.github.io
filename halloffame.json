@@ -47,16 +47,16 @@
     {
       "name": "Cyber Security Enthusiast",
       "description": "3rd place at Flag Hunt 2022",
-      "members": "Atikur Rahman",
-      "members": "Ishraq Uddin Chowdhury",
-      "members": "Md. Rezwan",
+      "members": "Atikur Rahman, Ishraq Uddin Chowdhury, Md. Rezwan",
       "photo": "assets/images/achievements/ach1.jpg",
       "link": "https://www.facebook.com/share/p/1ADZq2djtx/"
     },
     {
       "name": "R3D KN1GH7",
       "description": "3rd place at Cyber Crawler CTF 2023",
-      "photo": "assets/images/achievements/ach2.jpg"
+      "members": "Abdul Momen Safin, Nusrat Jahan Ashika, Md. Azhar, Syed Jisan Ahmed",
+      "photo": "assets/images/achievements/ach2.jpg",
+      "link": "https://www.facebook.com/share/p/1D3rBCfe4V/"
     }
   ]
 }
