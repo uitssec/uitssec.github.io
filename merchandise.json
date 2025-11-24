@@ -2,10 +2,10 @@
   "merchandise": [
     {
       "id": 1,
-      "name": "UITS SEC Premium T-Shirt",
-      "description": "High-quality black t-shirt with UITS Cyber Security Wing logo.",
-      "price": "450 BDT",
-      "image": "assets/images/merch/tshirt1.png"
+      "name": "UITS SEC Premium Hoodie",
+      "description": "High-quality black Hoodie with UITS Cyber Security Wing logo and USERNAME.",
+      "price": "BDT 599",
+      "image": "/assets/images/merchandise/Hoodie.png"
     },
     {
       "id": 2,
