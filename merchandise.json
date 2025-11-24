@@ -1,0 +1,18 @@
+{
+  "merchandise": [
+    {
+      "id": 1,
+      "name": "UITS SEC Premium T-Shirt",
+      "description": "High-quality black t-shirt with UITS Cyber Security Wing logo.",
+      "price": "450 BDT",
+      "image": "assets/images/merch/tshirt1.png"
+    },
+    {
+      "id": 2,
+      "name": "Cyber Warrior Sticker Pack",
+      "description": "Glossy vinyl sticker pack of 6 cybersecurity-themed designs.",
+      "price": "120 BDT",
+      "image": "assets/images/merch/stickers1.png"
+    }
+  ]
+}
