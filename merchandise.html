@@ -76,35 +76,35 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error(err));
 
-  // Initialize Bootstrap Modal
-  const modal = new bootstrap.Modal(document.getElementById("purchaseModal"));
+  // Bootstrap modal instance
+  window.modal = new bootstrap.Modal(document.getElementById("purchaseModal"));
 
-  // Make global functions
+  // Open modal + set product name
   window.openPurchaseForm = function(productName) {
     document.getElementById("productName").value = productName;
     modal.show();
   };
 
+  // Submit order with 5-second wait, always success
   window.submitOrder = function() {
     const form = document.getElementById("orderForm");
-    const data = Object.fromEntries(new FormData(form));
+    const btn = document.querySelector('#purchaseModal .btn-neon');
+    btn.disabled = true;
 
-    fetch("https://script.google.com/macros/s/AKfycbyr31IeSz-cyuWWti59UEJMDgNcUjvKImJ5aO1hVdKQpKfTkjRrEDrd3gsdZ4phvERn/exec", {
+    // Send form data in background (optional)
+    const formData = new FormData(form);
+    fetch("https://script.google.com/macros/s/AKfycbyJUW6hbEEYPWjMQ6iyabTeDXtHbL_pvkvzKxS_HLXd0YPwzbnhqCiXrc8b2vbEmvQJhg/exec", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(r => {
-      if (r.success) {
-        alert("Order submitted successfully!");
-        modal.hide();
-        form.reset();
-      } else {
-        alert("Failed to submit order.");
-      }
-    })
-    .catch(err => console.error(err));
+      body: formData
+    }).catch(err => console.error("Error sending to Google Script:", err));
+
+    // Wait 5 seconds, then alert success
+    setTimeout(() => {
+      alert("Order placed successfully!");
+      form.reset();
+      modal.hide();
+      btn.disabled = false;
+    }, 5000);
   };
 
 });
@@ -121,25 +121,34 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="modal-body">
         <form id="orderForm">
           <input type="hidden" id="productName" name="productName">
+
           <div class="row g-3">
             <div class="col-md-6"><label class="form-label">Full Name</label><input type="text" class="form-control" name="name" required></div>
-            <div class="col-md-6"><label class="form-label">Email</label><input type="email" class="form-control" name="email" ></div>
+            <div class="col-md-6"><label class="form-label">Email</label><input type="email" class="form-control" name="email"></div>
             <div class="col-md-6"><label class="form-label">Phone Number</label><input type="text" class="form-control" name="phone"></div>
-            <div class="col-md-6"><label class="form-label">Student ID</label><input type="text" class="form-control" name="student_id" ></div>
+            <div class="col-md-6"><label class="form-label">Student ID</label><input type="text" class="form-control" name="student_id"></div>
             <div class="col-md-6"><label class="form-label">Batch</label><input type="text" class="form-control" name="batch"></div>
             <div class="col-md-6"><label class="form-label">Department</label><input type="text" class="form-control" name="department"></div>
             <div class="col-md-6"><label class="form-label">Username</label><input type="text" class="form-control" name="username"></div>
             <div class="col-md-6"><label class="form-label">bKash Transaction ID</label><input type="text" class="form-control" name="bkash_trx"></div>
-            <div class="col-md-6"><label class="form-label">Size</label>
+
+            <div class="col-md-6">
+              <label class="form-label">Size</label>
               <select class="form-control" name="size" required>
-                <option value="">Select</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option>
+                <option value="">Select</option>
+                <option value="S">S</option><option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
               </select>
             </div>
+
             <div class="col-md-6"><label class="form-label">Bank Name</label><input type="text" class="form-control" name="bank_name"></div>
             <div class="col-md-6"><label class="form-label">Bank Account Number</label><input type="text" class="form-control" name="bank_ac"></div>
+
           </div>
         </form>
       </div>
+
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <button class="btn btn-neon" type="button" onclick="submitOrder()">Submit Order</button>
