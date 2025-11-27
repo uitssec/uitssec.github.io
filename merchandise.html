@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="assets/images/logo.svg">
 </head>
+
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top border-bottom border-secondary-subtle bg-body">
@@ -36,7 +37,7 @@
 <section class="py-5 container">
   <h1 class="fw-bold mb-3">Official Merchandise</h1>
   <p class="text-secondary">Support our community and show your cybersecurity spirit.</p>
-
+  <p style="color: red; font-weight: bold;">For UITS Cyber Security Wing members only!</p>
   <div id="merchList" class="row g-4 mt-4"></div>
 </section>
 
@@ -50,8 +51,9 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
   const merchList = document.getElementById("merchList");
+  const modal = new bootstrap.Modal(document.getElementById("purchaseModal"));
+  window.modal = modal;
 
   // Load merchandise from JSON
   fetch("merchandise.json")
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <h5 class="card-title fw-bold">${item.name}</h5>
               <p class="card-text text-secondary">${item.description}</p>
               <p class="fw-bold text-neon">${item.price}</p>
-              <button class="btn btn-outline-neon btn-sm mt-2" onclick="openPurchaseForm('${item.name}')">Purchase</button>
+              <button class="btn btn-outline-neon btn-sm mt-2" onclick="openPurchaseForm('${item.name}', ${item.id})">Purchase</button>
             </div>
           </div>
         `;
@@ -76,36 +78,99 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error(err));
 
-  // Bootstrap modal instance
-  window.modal = new bootstrap.Modal(document.getElementById("purchaseModal"));
+  // Open modal + set product info
+  window.openPurchaseForm = function(productName, productId) {
+  document.getElementById("productName").value = productName;
+  document.getElementById("productId").value = productId;
 
-  // Open modal + set product name
-  window.openPurchaseForm = function(productName) {
-    document.getElementById("productName").value = productName;
-    modal.show();
-  };
+  // Show/hide Size field
+  const sizeField = document.querySelector("[name='size']").closest(".col-md-6");
+  if (productId === 2) { // Keyring & Badge
+    sizeField.classList.add("d-none");
+    document.querySelector("[name='size']").required = false;
+  } else {
+    sizeField.classList.remove("d-none");
+    document.querySelector("[name='size']").required = true;
+  }
 
-  // Submit order with 5-second wait, always success
+  // Show/hide Username field
+  const usernameField = document.querySelector("[name='username']").closest(".col-md-6");
+  if (productId === 2) {
+    usernameField.classList.add("d-none");
+    document.querySelector("[name='username']").required = false;
+  } else {
+    usernameField.classList.remove("d-none");
+    document.querySelector("[name='username']").required = true;
+  }
+
+  // Update bKash instruction label
+  const bKashLabel = document.querySelector("#mobile_number_field label:first-of-type");
+  if (productId === 2) {
+    bKashLabel.textContent = "Send BDT 120 to 01572169652";
+  } else {
+    bKashLabel.textContent = "Send BDT 599 to 01572169652";
+  }
+
+  modal.show();
+};
+
+
+  // Submit order
   window.submitOrder = function() {
     const form = document.getElementById("orderForm");
     const btn = document.querySelector('#purchaseModal .btn-neon');
     btn.disabled = true;
 
-    // Send form data in background (optional)
     const formData = new FormData(form);
-    fetch("https://script.google.com/macros/s/AKfycbyJUW6hbEEYPWjMQ6iyabTeDXtHbL_pvkvzKxS_HLXd0YPwzbnhqCiXrc8b2vbEmvQJhg/exec", {
+
+    fetch("https://script.google.com/macros/s/AKfycbwt5brBFoFyC9Xv2WyJ5dJ9xKLwwgz4m5Ahj1Zui2q_3n_PUBLUa_ZA7dSx97M5ISgt8A/exec", {
       method: "POST",
       body: formData
     }).catch(err => console.error("Error sending to Google Script:", err));
 
-    // Wait 5 seconds, then alert success
     setTimeout(() => {
-      alert("Order placed successfully!");
+      alert("Order placed successfully! \nWe will be confirming your payment manually.\nFurther details will be sent to your E-mail. \n\n(Order for your loved one too 👀)");
       form.reset();
       modal.hide();
       btn.disabled = false;
-    }, 5000);
+    }, 1000);
   };
+
+  // PAYMENT METHOD HANDLING
+  const paymentSelect = document.getElementById("payment_method");
+  paymentSelect.addEventListener("change", function () {
+    const val = this.value;
+
+    const fields = {
+      mobile_number_field: document.getElementById("mobile_number_field"),
+      mobile_trx_field: document.getElementById("mobile_trx_field"),
+      bank_name_field: document.getElementById("bank_name_field"),
+      bank_ac_field: document.getElementById("bank_ac_field")
+    };
+
+    // Hide all fields
+    Object.values(fields).forEach(f => f.classList.add("d-none"));
+
+    // Remove required
+    document.querySelector("[name='bkash_number']").required = false;
+    document.querySelector("[name='bkash_trx']").required = false;
+    document.querySelector("[name='bank_name']").required = false;
+    document.querySelector("[name='bank_ac']").required = false;
+
+    if (val === "mobile") {
+      fields.mobile_number_field.classList.remove("d-none");
+      fields.mobile_trx_field.classList.remove("d-none");
+      document.querySelector("[name='bkash_number']").required = true;
+      document.querySelector("[name='bkash_trx']").required = true;
+    }
+
+    if (val === "bank") {
+      fields.bank_name_field.classList.remove("d-none");
+      fields.bank_ac_field.classList.remove("d-none");
+      document.querySelector("[name='bank_name']").required = true;
+      document.querySelector("[name='bank_ac']").required = true;
+    }
+  });
 
 });
 </script>
@@ -118,32 +183,89 @@ document.addEventListener("DOMContentLoaded", () => {
         <h5 class="modal-title fw-bold">Purchase Merchandise</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
+
       <div class="modal-body">
         <form id="orderForm">
           <input type="hidden" id="productName" name="productName">
+          <input type="hidden" id="productId" name="productId">
 
           <div class="row g-3">
-            <div class="col-md-6"><label class="form-label">Full Name</label><input type="text" class="form-control" name="name" required></div>
-            <div class="col-md-6"><label class="form-label">Email</label><input type="email" class="form-control" name="email"></div>
-            <div class="col-md-6"><label class="form-label">Phone Number</label><input type="text" class="form-control" name="phone"></div>
-            <div class="col-md-6"><label class="form-label">Student ID</label><input type="text" class="form-control" name="student_id"></div>
-            <div class="col-md-6"><label class="form-label">Batch</label><input type="text" class="form-control" name="batch"></div>
-            <div class="col-md-6"><label class="form-label">Department</label><input type="text" class="form-control" name="department"></div>
-            <div class="col-md-6"><label class="form-label">Username</label><input type="text" class="form-control" name="username"></div>
-            <div class="col-md-6"><label class="form-label">bKash Transaction ID</label><input type="text" class="form-control" name="bkash_trx"></div>
+            <div class="col-md-6">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control filtered" name="name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control filtered" name="email" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone Number</label>
+              <input type="number" class="form-control filtered" name="phone" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Student ID</label>
+              <input type="number" class="form-control filtered" name="student_id" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Batch(Section)</label>
+              <input type="text" class="form-control filtered" name="batch" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Department</label>
+              <input type="text" class="form-control filtered" name="department" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Username or Name for embroidery on Hoodie</label>
+              <input type="text" class="form-control filtered" name="username" required>
+            </div>
 
+            <!-- PAYMENT METHOD -->
+            <div class="col-md-6">
+              <label class="form-label">Payment Method</label>
+              <select class="form-control" name="payment_method" id="payment_method" required>
+                <option value="">Select</option>
+                <option value="mobile">Mobile Banking (bKash)</option>
+                <option value="bank">Bank Account</option>
+              </select>
+            </div>
+
+            <!-- MOBILE BANKING -->
+            <div class="col-md-6 d-none" id="mobile_number_field">
+              <label class="form-label">Send BDT 599 to 01572169652</label>
+              <br>
+              <label class="form-label">Your bKash Mobile Number</label>
+              <input type="text" class="form-control" name="bkash_number" required>
+            </div>
+            <div class="col-md-6 d-none" id="mobile_trx_field">
+              <label class="form-label">...</label>
+              <br>
+              <label class="form-label">bKash Transaction ID</label>
+              <input type="text" class="form-control" name="bkash_trx" required>
+            </div>
+
+            <!-- BANK ACCOUNT -->
+            <div class="col-md-6 d-none" id="bank_name_field">
+              <label class="form-label">Account Holder Name</label>
+              <input type="text" class="form-control" name="bank_name">
+            </div>
+            <div class="col-md-6 d-none" id="bank_ac_field">
+              <label class="form-label">Account Number</label>
+              <input type="text" class="form-control" name="bank_ac">
+            </div>
+
+            <!-- SIZE -->
             <div class="col-md-6">
               <label class="form-label">Size</label>
               <select class="form-control" name="size" required>
                 <option value="">Select</option>
-                <option value="S">S</option><option value="M">M</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
                 <option value="L">L</option>
                 <option value="XL">XL</option>
+                <option value="2XL">2XL</option>
+                <option value="3XL">3XL</option>
               </select>
             </div>
-
-            <div class="col-md-6"><label class="form-label">Bank Name</label><input type="text" class="form-control" name="bank_name"></div>
-            <div class="col-md-6"><label class="form-label">Bank Account Number</label><input type="text" class="form-control" name="bank_ac"></div>
 
           </div>
         </form>
@@ -153,6 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <button class="btn btn-neon" type="button" onclick="submitOrder()">Submit Order</button>
       </div>
+
     </div>
   </div>
 </div>
