@@ -3,15 +3,15 @@
     {
       "id": 1,
       "name": "UITS SEC Premium Hoodie",
-      "description": "High-quality black Hoodie with UITS Cyber Security Wing logo and USERNAME.",
+      "description": "High-quality black Hoodie with embroidery UITS Cyber Security Wing logo and USERNAME.",
       "price": "BDT 599",
       "image": "/assets/images/merchandise/Hoodie.png"
     },
     {
       "id": 2,
       "name": "UITS SEC Keyring and Badge Combo",
-      "description": "A pack of UITS Cyber Security Logo Keyring and Badge.",
-      "price": "120 BDT",
+      "description": "A pack of UITS Cyber Security Logo themed Keyring and Badge.",
+      "price": "BDT 120",
       "image": "assets/images/merchandise/Key.jpg"
     }
   ]
