@@ -13,6 +13,13 @@
       "description": "A pack of UITS Cyber Security Logo themed Keyring and Badge.",
       "price": "BDT 120",
       "image": "assets/images/merchandise/Key.jpg"
+    },
+    {
+      "id": 3,
+      "name": "More Coming Soon!",
+      "description": "Stay connected to unlock premium new swags!",
+      "price": "",
+      "image": "assets/images/merchandise/More.png"
     }
   ]
 }
