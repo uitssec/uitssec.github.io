@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="assets/images/logo.svg">
   <style>
-    /* Minimal inline styles only for demo safety if your CSS is missing */
     .text-neon { color: #0ff; font-weight: 700; }
     .btn-outline-neon { border-color: #0ff; color: #0ff; background: transparent; }
     .btn-neon { background: linear-gradient(90deg,#0ff,#0af); color: #000; }
@@ -60,11 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const merchList = document.getElementById("merchList");
   const modalEl = document.getElementById("purchaseModal");
   const modal = modalEl ? new bootstrap.Modal(modalEl) : null;
-  // Use unique ID so we always target the exact modal button
   const purchaseBtn = document.getElementById("modalPurchaseBtn");
+  if (purchaseBtn) purchaseBtn.disabled = true; // start disabled
   window.modal = modal;
 
-  // Example fallback merchandise if merchandise.json is missing for testing:
   const fallbackData = {
     merchandise: [
       { id: 1, name: "Hoodie", description: "Comfortable hoodie with embroidery", price: "BDT 599", image: "assets/images/hoodie.jpg" },
@@ -73,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ]
   };
 
-  // Try load JSON; fall back to inline data on failure (useful for local testing)
   fetch("merchandise.json")
     .then(res => {
       if (!res.ok) throw new Error("No JSON");
@@ -83,54 +80,47 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(_ => renderMerch(fallbackData));
 
   function renderMerch(data) {
-    merchList.innerHTML = ""; // clear
+    merchList.innerHTML = "";
     data.merchandise.forEach(item => {
       const card = document.createElement("div");
       card.className = "col-md-4 col-lg-3";
-      // note: card Purchase buttons use btn-outline-neon (not btn-neon) so they won't conflict
       card.innerHTML = `
-  <div class="card bg-body-secondary border-secondary h-100">
-    <img src="${item.image}" class="card-img-top" alt="${escapeHtml(item.name)}" onerror="this.style.opacity=0.6">
-    <div class="card-body">
-      <h5 class="card-title fw-bold">${escapeHtml(item.name)}</h5>
-      <p class="card-text text-secondary">${escapeHtml(item.description)}</p>
-      <p class="fw-bold text-neon">${escapeHtml(item.price)}</p>
-
-      ${
-        item.id === 3
-          ? `<span class="badge bg-danger mt-2">Coming Soon</span>`
-          : `<button class="btn btn-outline-neon btn-sm mt-2"
-               onclick="openPurchaseForm('${escapeJs(item.name)}', ${item.id})">
-               Purchase
-             </button>`
-      }
-    </div>
-  </div>
-`;
+        <div class="card bg-body-secondary border-secondary h-100">
+          <img src="${item.image}" class="card-img-top" alt="${escapeHtml(item.name)}" onerror="this.style.opacity=0.6">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">${escapeHtml(item.name)}</h5>
+            <p class="card-text text-secondary">${escapeHtml(item.description)}</p>
+            <p class="fw-bold text-neon">${escapeHtml(item.price)}</p>
+            ${
+              item.id === 3
+                ? `<span class="badge bg-danger mt-2">Coming Soon</span>`
+                : `<button class="btn btn-outline-neon btn-sm mt-2"
+                     onclick="openPurchaseForm('${escapeJs(item.name)}', ${item.id})">
+                     Purchase
+                   </button>`
+            }
+          </div>
+        </div>
+      `;
       merchList.appendChild(card);
     });
   }
 
-  // Utility: escape HTML to avoid injection when injecting strings
   function escapeHtml(str) {
     if (typeof str !== "string") return str;
     return str.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   }
-  // Utility: escape for JS-quoted attribute (simple)
   function escapeJs(str) {
     if (typeof str !== "string") return str;
     return str.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,'\\n').replace(/\r/g,'');
   }
 
-  // Expose openPurchaseForm globally for inline onclick handlers
   window.openPurchaseForm = function(productName, productId) {
-    // Defensive checks
     const productNameInput = document.getElementById("productName");
     const productIdInput = document.getElementById("productId");
     if (productNameInput) productNameInput.value = productName || "";
     if (productIdInput) productIdInput.value = productId ?? "";
 
-    // Elements we manipulate
     const sizeSelect = document.querySelector("[name='size']");
     const sizeField = sizeSelect ? sizeSelect.closest(".col-md-6") : null;
     const usernameInput = document.querySelector("[name='username']");
@@ -138,13 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileNumberField = document.getElementById("mobile_number_field");
     const bKashLabel = document.querySelector("#mobile_number_field label:first-of-type");
 
-    // Reset modal button visibility & enabled state first
-    if (purchaseBtn) {
-      purchaseBtn.classList.remove("d-none");
-      purchaseBtn.disabled = false;
-    }
+    if (purchaseBtn) purchaseBtn.disabled = true; // disable initially
 
-    // DEFAULT: show size field (unless productId === 2)
     if (sizeField && sizeSelect) {
       if (productId === 2) {
         sizeField.classList.add("d-none");
@@ -155,26 +140,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Username field logic
     if (usernameField && usernameInput) {
       if (productId === 2) {
         usernameField.classList.add("d-none");
         usernameInput.required = false;
       } else if (productId === 3) {
-        // productId 3: hide username field AND hide modal submit button
         usernameField.classList.add("d-none");
         usernameInput.required = false;
-        if (purchaseBtn) {
-          purchaseBtn.classList.add("d-none");
-          purchaseBtn.disabled = true;
-        }
       } else {
         usernameField.classList.remove("d-none");
         usernameInput.required = true;
       }
     }
 
-    // Update bKash label text safely
     if (bKashLabel) {
       if (productId === 2) {
         bKashLabel.textContent = "Send BDT 120 to 01572169652";
@@ -183,57 +161,42 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Show modal
-    if (modal) {
-      modal.show();
-    } else {
-      console.warn("Modal instance not available.");
-    }
+    if (modal) modal.show();
+    updateSubmitState();
   };
 
-  // Submit order function
   window.submitOrder = function() {
     const form = document.getElementById("orderForm");
     if (!form) return alert("Order form not found.");
 
-    // If modal button is hidden or disabled, prevent submission
-    if (purchaseBtn && (purchaseBtn.classList.contains("d-none") || purchaseBtn.disabled)) {
-      return alert("This product is not available for purchase.");
-    }
+    if (purchaseBtn && purchaseBtn.disabled) return alert("Please fill all required fields first.");
 
-    const btn = purchaseBtn;
-    if (btn) btn.disabled = true;
-
+    purchaseBtn.disabled = true;
     const formData = new FormData(form);
 
-    // Post to your Google Script (kept as provided)
     fetch("https://script.google.com/macros/s/AKfycbwt5brBFoFyC9Xv2WyJ5dJ9xKLwwgz4m5Ahj1Zui2q_3n_PUBLUa_ZA7dSx97M5ISgt8A/exec", {
       method: "POST",
       body: formData
     }).catch(err => console.error("Error sending to Google Script:", err));
 
-    // Simple UX feedback
     setTimeout(() => {
       alert("Order placed successfully! \nWe will be confirming your payment manually.\nFurther details will be sent to your E-mail.");
-      if (form) form.reset();
+      form.reset();
       if (modal) modal.hide();
-      if (btn) btn.disabled = false;
+      if (purchaseBtn) purchaseBtn.disabled = true;
     }, 800);
   };
 
-  // Payment method handling
   const paymentSelect = document.getElementById("payment_method");
   if (paymentSelect) {
     paymentSelect.addEventListener("change", function () {
       const val = this.value;
-
       const fields = {
         mobile_number_field: document.getElementById("mobile_number_field"),
         mobile_trx_field: document.getElementById("mobile_trx_field"),
         bank_name_field: document.getElementById("bank_name_field"),
         bank_ac_field: document.getElementById("bank_ac_field")
       };
-
       Object.values(fields).forEach(f => { if (f) f.classList.add("d-none"); });
 
       const bkashNum = document.querySelector("[name='bkash_number']");
@@ -259,8 +222,27 @@ document.addEventListener("DOMContentLoaded", () => {
         if (bankName) bankName.required = true;
         if (bankAc) bankAc.required = true;
       }
+      updateSubmitState();
     });
   }
+
+  // --- ENABLE SUBMIT ONLY WHEN ALL REQUIRED FIELDS FILLED ---
+  function updateSubmitState() {
+  if (!purchaseBtn) return;
+  const form = document.getElementById("orderForm");
+  const requiredFields = form.querySelectorAll("input:required, select:required");
+  let allFilled = true;
+  requiredFields.forEach(field => {
+    if (field.closest(".d-none")) return; // ignore hidden fields
+    if (!field.value.trim()) allFilled = false;
+  });
+  purchaseBtn.disabled = !allFilled;
+  purchaseBtn.textContent = allFilled ? "Submit Order" : "Fill all information";
+}
+
+
+  const formInputs = document.querySelectorAll("#orderForm input, #orderForm select");
+  formInputs.forEach(input => input.addEventListener("input", updateSubmitState));
 
 });
 </script>
@@ -327,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <input type="text" class="form-control" name="bkash_number" required>
             </div>
             <div class="col-md-6 d-none" id="mobile_trx_field">
-              <label class="form-label"><a href="https://docs.google.com/document/d/1bDyXTVkNpO48H-IrHZh5JW--O3i_vsv9UVnQONEHnEU/edit?usp=sharing">Check the Terms & Conditions</a></label>
+              <label class="form-label"><a href="#">Check the Terms & Conditions</a></label>
               <br>
               <label class="form-label">bKash Transaction ID</label>
               <input type="text" class="form-control" name="bkash_trx" required>
@@ -341,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <input type="text" class="form-control" name="bank_name" disabled="disabled">
             </div>
             <div class="col-md-6 d-none" id="bank_ac_field">
-              <label class="form-label"><a href="https://docs.google.com/document/d/1bDyXTVkNpO48H-IrHZh5JW--O3i_vsv9UVnQONEHnEU/edit?usp=sharing">Check the Terms & Conditions</a></label>
+              <label class="form-label"><a href="#">Check the Terms & Conditions</a></label>
               <br>
               <label class="form-label">Account Number</label>
               <input type="text" class="form-control" name="bank_ac" disabled="disabled">
@@ -360,17 +342,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <option value="3XL">3XL</option>
               </select>
             </div>
-
           </div>
         </form>
       </div>
 
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <!-- Unique ID for modal submit button -->
         <button id="modalPurchaseBtn" class="btn btn-neon" type="button" onclick="submitOrder()">Submit Order</button>
       </div>
-
     </div>
   </div>
 </div>
