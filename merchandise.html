@@ -43,7 +43,7 @@
   <h1 class="fw-bold mb-3">Official Merchandise</h1>
   <p class="text-secondary">Support our community and show your cybersecurity spirit.</p>
   <p style="color: red; font-weight: bold;">For UITS Cyber Security Wing members only!</p>
-  <marquee style="color: red; font-weight: bold; font-family: cursive;">Orders for the 𝐔𝐈𝐓𝐒𝐒𝐄𝐂 𝐏𝐫𝐞𝐦𝐢𝐮𝐦 𝐇𝐨𝐨𝐝𝐢𝐞 will close on 𝟐𝟓𝐭𝐡 𝐃𝐞𝐜𝐞𝐦𝐛𝐞𝐫 for this session!</marquee>
+  <marquee style="color: red; font-weight: bold; font-family: cursive;">Orders for the 𝐔𝐈𝐓𝐒𝐒𝐄𝐂 𝐏𝐫𝐞𝐦𝐢𝐮𝐦 𝐇𝐨𝐨𝐝𝐢𝐞 is closed for this session!</marquee>
   <div id="merchList" class="row g-4 mt-4"></div>
 </section>
 
@@ -91,9 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
             <p class="card-text text-secondary">${item.description}</p>
             <p class="fw-bold text-neon">${item.price}</p>
             ${
-              item.id === 3
-                ? `<span class="badge bg-danger mt-2">Coming Soon</span>`
-                : `<button class="btn btn-outline-neon btn-sm mt-2" onclick="openPurchaseForm('${item.name}', ${item.id})">Purchase</button>`
+              item.id === 1
+            ? `<span class="badge bg-primary mt-2">Ended for this season</span>`
+            : item.id === 3
+            ? `<span class="badge bg-danger mt-2">Coming Soon</span>`
+            : `<button class="btn btn-outline-neon btn-sm mt-2" onclick="openPurchaseForm('${item.name}', ${item.id})">Purchase</button>`
             }
           </div>
         </div>`;
