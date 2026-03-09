@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Boot Camp 1 – Python 101 Tasks</title>
+    <meta name="description" content="UITS Cyber Security Wing — a community under the UITS Computer Club.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/logo.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+.task-terminal{
+background:#1a1d23;
+border:1px solid #333;
+border-radius:10px;
+padding:20px;
+font-family:'JetBrains Mono',monospace;
+color:#d4d4d4;
+box-shadow:0 0 12px rgba(0,255,255,.15);
+height:100%;
+}
+
+.task-terminal h3{
+color:#0ff;
+font-weight:700;
+}
+
+.task-terminal textarea{
+background:#0d0f13;
+border:1px solid #444;
+color:#eee;
+font-family:'JetBrains Mono',monospace;
+}
+
+.task-terminal input[type=file]{
+background:#0d0f13;
+border:1px solid #444;
+color:#ccc;
+}
+
+.btn-neon{
+background:#0ff;
+color:#000;
+font-weight:bold;
+box-shadow:0 0 15px rgba(0,255,255,.6);
+}
+
+.btn-neon:hover{
+background:#0cc;
+color:#fff;
+}
+
+.example{
+font-size:.9rem;
+color:#aaa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark sticky-top border-bottom border-secondary-subtle bg-body">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+      <img src="assets/images/logo.svg" width="28" height="28" alt="logo">
+      <span>UITS Cyber Security Wing</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="verify.html">Certification Verification</a></li>
+        <li class="nav-item"><a class="nav-link" href="halloffame.html">Hall of Fame</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="bootcamp.html">Boot Camp</a></li>
+        <li class="nav-item"><a class="nav-link" href="merchandise.html">Merchandise</a></li>
+        <li class="nav-item ms-lg-3">
+          <button id="themeToggle" class="btn btn-outline-light btn-sm" type="button" aria-label="Toggle theme">
+            <span class="theme-text">Light</span>/<span class="theme-text">Dark</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="container py-5">
+
+<h1 class="fw-bold mb-4 text-center">Boot Camp 1 - Python 101 - Tasks</h1>
+
+<h4 class="text-center mb-5 text-secondary">Session 1 Tasks</h4>
+
+<h5 class="text-warning fw-bold mt-4">Submitting Tasks is Crucial!</h5>
+
+<p class="text-secondary">
+All participants <strong>must submit the assigned tasks</strong> before attending the next class session. 
+These exercises are designed to reinforce what was taught in the boot camp and help you practice independently.
+</p>
+
+<p class="text-secondary">
+<strong>Important Notice:</strong> Task submission is <strong>mandatory</strong> for entry into the next class. 
+If you do not submit your tasks, you will <strong>not be allowed to attend the next session</strong>.
+</p>
+
+<p class="text-secondary">
+Please complete the tasks <strong>on your own</strong>. The purpose of this boot camp is to help you 
+<strong>learn and build real programming skills</strong>. Avoid using <strong>ChatGPT or other AI tools</strong> 
+to generate solutions. This is not a departmental course requirement; you joined voluntarily to learn, 
+so make the most of the opportunity by solving the problems yourself.
+</p>
+
+<br>
+<form id="bootcampForm">
+
+<div class="row g-4">
+
+<!-- TASK 1 -->
+<div class="col-md-6">
+  <div class="task-terminal">
+
+    <h3>Task 1: Socrative Quiz</h3>
+
+    <p class="example">
+      Scan the QR code below or visit:<br>
+      <code>gosocrative.com</code><br><br>
+
+      Enter the room name:<br>
+      <code>uitssec</code><br><br>
+
+      Complete all the MCQ questions in the quiz and submit a screenshot of your final result.
+    </p>
+
+    <div class="text-center mb-3">
+      <img src="assets/images/socrative_qr.png" alt="Socrative QR Code" class="img-fluid" style="max-width:200px;">
+    </div>
+
+    <label class="form-label">Result Screenshot</label>
+    <input class="form-control" type="file" name="task1_image" accept="image/*" required>
+
+  </div>
+</div>
+
+<!-- TASK 2 -->
+<div class="col-md-6">
+<div class="task-terminal">
+
+<h3>Task 2: List Slicing and Reversing</h3>
+
+<p class="example">
+Create a list of 10 numbers and print:
+First 5, Last 5, Every second element, Reverse list.
+</p>
+
+<p class="example">
+<b>Example List</b><br>
+[1,2,3,4,5,6,7,8,9,10]
+</p>
+
+<label class="form-label">Your Code</label>
+<textarea class="form-control mb-3" rows="5" name="task2_code" ></textarea>
+
+<label class="form-label">Input/Output Screenshot</label>
+<input class="form-control" type="file" name="task2_image" accept="image/*" >
+
+</div>
+</div>
+
+<!-- TASK 3 -->
+<div class="col-md-6">
+<div class="task-terminal">
+
+<h3>Task 3: Formatting Multiple Variables</h3>
+
+<p class="example">
+Ask user for name, age and department and print a formatted sentence using f-string.
+</p>
+
+<p class="example">
+<b>Example Output</b><br>
+Alice is 21 years old and studies in the CS department.
+</p>
+
+<label class="form-label">Your Code</label>
+<textarea class="form-control mb-3" rows="5" name="task3_code" ></textarea>
+
+<label class="form-label">Input/Output Screenshot</label>
+<input class="form-control" type="file" name="task3_image" accept="image/*" >
+
+</div>
+</div>
+
+<!-- TASK 4 -->
+<div class="col-md-6">
+<div class="task-terminal">
+
+<h3>Task 4: String Strip and Replace</h3>
+
+<p class="example">
+Input a sentence with extra spaces. Remove spaces with <code>strip()</code> and replace a word.
+</p>
+
+<p class="example">
+Input: "   I love Python programming   "<br>
+Output: "I love Java programming"
+</p>
+
+<label class="form-label">Your Code</label>
+<textarea class="form-control mb-3" rows="5" name="task4_code" ></textarea>
+
+<label class="form-control mb-3">Input/Output Screenshot</label>
+<input class="form-control" type="file" name="task4_image" accept="image/*" >
+
+</div>
+</div>
+
+<!-- TASK 5 -->
+<div class="col-md-6">
+  <div class="task-terminal">
+
+    <h3>Task 5: Type Casting</h3>
+
+    <p class="example">
+      The program receives two numbers as strings:<br>
+      <code>num1 = "15"</code><br>
+      <code>num2 = "5"</code><br>
+      Convert them to integers, add them, print the result, then convert the result to float and print again.
+    </p>
+
+    <label class="form-label">Your Code</label>
+    <textarea class="form-control mb-3" rows="5" name="task5_code" ></textarea>
+
+    <label class="form-label">Input/Output Screenshot</label>
+    <input class="form-control" type="file" name="task5_image" accept="image/*" >
+
+  </div>
+</div>
+
+<!-- TASK 6 -->
+<div class="col-md-6">
+  <div class="task-terminal">
+
+    <h3>Task 6: Boolean / Logical Operations</h3>
+
+    <p class="example">
+      Create two boolean variables:<br>
+      <code>is_student</code><br>
+      <code>has_id</code><br><br>
+
+      Then check:<br>
+      1. If the person can enter the exam hall (must be student AND have ID)<br>
+      2. If the person gets library access (student OR has ID)<br>
+      3. Print the opposite of <code>is_student</code><br>
+      4. Use XOR to check if only one condition is true
+    </p>
+
+    <label class="form-label">Your Code</label>
+    <textarea class="form-control mb-3" rows="5" name="task6_code" ></textarea>
+
+    <label class="form-label">Input/Output Screenshot</label>
+    <input class="form-control" type="file" name="task6_image" accept="image/*" >
+
+  </div>
+</div>
+
+<!-- TASK 7 -->
+<div class="col-md-6">
+<div class="task-terminal">
+
+<h3>Task 7: F-String Calculator</h3>
+
+<p class="example">
+Ask the user for two numbers and print sum, difference, product and division using f-strings.
+</p>
+
+<p class="example">
+<b>Example Input</b><br>
+5<br>2<br><br>
+
+<b>Output</b><br>
+Sum: 7<br>
+Difference: 3<br>
+Product: 10<br>
+Division: 2.5
+</p>
+
+<label class="form-label">Your Code</label>
+<textarea class="form-control mb-3" rows="5" name="task7_code" ></textarea>
+
+<label class="form-label">Input/Output Screenshot</label>
+<input class="form-control" type="file" name="task7_image" accept="image/*" >
+
+</div>
+</div>
+
+
+</div>
+
+<hr class="my-5">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+<label class="form-label">Full Name</label>
+<input type="text" class="form-control" name="student_name" required>
+</div>
+
+<div class="col-md-6">
+<label class="form-label">Student ID</label>
+<input type="text" class="form-control" name="student_id" required>
+</div>
+
+</div>
+
+<div class="text-center mt-5">
+
+<button type="button" onclick="submitBootcamp()" class="btn btn-neon btn-lg">
+Submit All Solutions
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+<script>
+
+async function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = ()=> resolve(reader.result.split(",")[1])
+    reader.onerror = reject
+  })
+}
+
+function delay(ms){
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function submitBootcamp(){
+
+  const form = document.getElementById("bootcampForm")
+  const button = document.querySelector(".btn-neon")
+
+  button.disabled = true
+  button.innerText = "Submitting..."
+
+  // 5 second delay before sending
+  await delay(5000)
+
+  const data = new FormData()
+
+  data.append("student_name", form.student_name.value)
+  data.append("student_id", form.student_id.value)
+
+  for(let i=1;i<=4;i++){
+
+    const code = form[`task${i}_code`].value
+    const file = form[`task${i}_image`].files[0]
+
+    const base64 = await fileToBase64(file)
+
+    data.append(`task${i}_code`,code)
+    data.append(`task${i}_image`,base64)
+    data.append(`task${i}_image_name`,file.name)
+
+  }
+
+  fetch("https://script.google.com/macros/s/AKfycbxZRKf08q0tL2ydEA0mfRfrqI82K73KQFEXL09s99-P4WCj_WXM9JkNhWPWVw6e3vDf/exec",{
+    method:"POST",
+    mode:"no-cors",
+    body:data
+  })
+
+  // show submitted message
+  button.innerText = "Submitted ✓"
+
+  // wait 5 seconds
+  await delay(5000)
+
+  form.reset()
+
+  button.innerText = "Submit All Solutions"
+  button.disabled = false
+
+}
+
+</script>
+
+</body>
+</html>
