@@ -337,7 +337,7 @@ Submit All Solutions
 </form>
 
 </section>
-    
+
 <footer class="mt-5 pt-5 border-top border-secondary-subtle bg-body">
   <div class="container pb-4">
     <div class="row gy-4">
@@ -376,41 +376,60 @@ async function submitBootcamp(){
   const form = document.getElementById("bootcampForm")
   const button = document.querySelector(".btn-neon")
 
+  const name = form.student_name.value.trim()
+  const id = form.student_id.value.trim()
+
+  if(!name || !id){
+    alert("Please enter your Full Name and Student ID.")
+    return
+  }
+
   button.disabled = true
   button.innerText = "Submitting..."
 
-  // 5 second delay before sending
-  await delay(5000)
+  await delay(3000)
 
   const data = new FormData()
 
-  data.append("student_name", form.student_name.value)
-  data.append("student_id", form.student_id.value)
+  data.append("student_name", name)
+  data.append("student_id", id)
 
-  for(let i=1;i<=4;i++){
+  for(let i=1;i<=7;i++){
 
-    const code = form[`task${i}_code`].value
-    const file = form[`task${i}_image`].files[0]
+    let codeField = form[`task${i}_code`]
+    let fileField = form[`task${i}_image`]
 
-    const base64 = await fileToBase64(file)
+    let code = codeField ? codeField.value.trim() : ""
+    let file = fileField ? fileField.files[0] : null
 
-    data.append(`task${i}_code`,code)
-    data.append(`task${i}_image`,base64)
-    data.append(`task${i}_image_name`,file.name)
+    // send null if code empty
+    if(!code){
+      code = "null"
+    }
+
+    let base64 = "null"
+    let filename = "null"
+
+    if(file){
+      base64 = await fileToBase64(file)
+      filename = file.name
+    }
+
+    data.append(`task${i}_code`, code)
+    data.append(`task${i}_image`, base64)
+    data.append(`task${i}_image_name`, filename)
 
   }
 
-  fetch("https://script.google.com/macros/s/AKfycbxZRKf08q0tL2ydEA0mfRfrqI82K73KQFEXL09s99-P4WCj_WXM9JkNhWPWVw6e3vDf/exec",{
+  fetch("https://script.google.com/macros/s/AKfycbxoUXb8cOlJnz4vIeVocVnfziTHxUBS2cXLgzxtVrOiDM3UX4SLFcZeabdpvQGVcwcP/exec",{
     method:"POST",
     mode:"no-cors",
     body:data
   })
 
-  // show submitted message
   button.innerText = "Submitted ✓"
 
-  // wait 5 seconds
-  await delay(5000)
+  await delay(4000)
 
   form.reset()
 
