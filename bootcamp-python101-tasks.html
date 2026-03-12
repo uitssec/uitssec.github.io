@@ -65,6 +65,11 @@ font-size:.9rem;
 color:#aaa;
 }
 
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 </style>
 
 </head>
@@ -328,8 +333,8 @@ Division: 2.5
 
 <div class="text-center mt-5">
 
-<button type="button" onclick="submitBootcamp()" class="btn btn-neon btn-lg">
-Submit All Solutions
+<button type="button" class="btn btn-neon btn-lg" disabled>
+    Submission Time Ended
 </button>
 
 </div>
